@@ -1,6 +1,8 @@
 import base64
 import io
+import json
 import time
+import uuid
 
 import httpx
 import numpy as np
@@ -17,8 +19,6 @@ from schemas import (
     PredictResponse,
 )
 
-import json
-import uuid
 app = FastAPI(
     title="YOLO Inference API",
     description="API REST para inferência com YOLOv8 no Raspberry Pi 5",
