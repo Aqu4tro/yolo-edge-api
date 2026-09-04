@@ -1,6 +1,5 @@
 FROM python:3.11-slim-bookworm
 
-
 # Instala dependencias do sistema + curl para o healthcheck
 RUN echo "deb [trusted=yes] http://archive.raspberrypi.com/debian/ bookworm main" > /etc/apt/sources.list.d/raspi.list && \
     apt-get update && apt-get install -y --no-install-recommends \
@@ -19,8 +18,9 @@ RUN pip install --no-cache-dir torch torchvision --index-url https://download.py
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia codigo da aplicacao
+# Copia o codigo da aplicação e o modulo reutilizavel de pré-processamento
 COPY app/ .
+COPY preprocessing/ ./preprocessing/
 
 EXPOSE 8000
 
